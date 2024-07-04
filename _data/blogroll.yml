@@ -38,3 +38,7 @@ bloglist:
   - BlogName: Cory Dransfeldt
     link: "https://coryd.dev/"
     rss: "https://coryd.dev/feeds"
+
+  - BlogName: starbreaker.org
+    link: "https://starbreaker.org"
+    rss: "https://starbreaker.org/feeds/everything.xml"
