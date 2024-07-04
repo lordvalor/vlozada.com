@@ -34,3 +34,7 @@ bloglist:
   - BlogName: Fanatic Naturals
     link: "https://fanaticnaturals.com/"
     rss: "https://fanaticnaturals.com/"
+
+  - BlogName: Cory Dransfeldt
+    link: "https://coryd.dev/"
+    rss: "https://coryd.dev/feeds"

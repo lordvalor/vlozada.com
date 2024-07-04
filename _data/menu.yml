@@ -18,7 +18,10 @@ contactLink:
   link: "https://www.linkedin.com/in/valdemar-dev/"
 
 - title: Github
-  link: "https://github.com/vlozadadotcom"
+  link: "https://github.com/lordvalor"
+
+- title: Codeberg
+  link: "https://codeberg.org/vlozada"
 
 - title: Mastodon
   link: "https://mastodon.social/@lordvalor"

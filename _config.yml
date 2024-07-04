@@ -10,7 +10,7 @@ social:
 
 paginate: 5
 paginate_path: "/page:num/"
-permalink: /:title
+permalink: /:title.html
 
 
 timezone: "America/Lima"
