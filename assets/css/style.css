@@ -45,8 +45,9 @@ span.categories {
   color: #fff;
   font-size: 0.8rem;
 }
-.header nav > li {
+.header nav > ol {
   display: inline-block;
+  list-style: none;
   padding: 25px 10px;
   margin-bottom: 0.5rem;
 }
