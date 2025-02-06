@@ -1,9 +1,7 @@
 
-[![Jekyll site CI](https://github.com/vlozadadotcom/vlozadadotcom.github.io/actions/workflows/jekyll.yml/badge.svg)](https://github.com/vlozadadotcom/vlozadadotcom.github.io/actions/workflows/jekyll.yml) [![pages-build-deployment](https://github.com/vlozadadotcom/vlozadadotcom.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vlozadadotcom/vlozadadotcom.github.io/actions/workflows/pages/pages-build-deployment)
+# Migrating to 11ty/Eleventy
 
-# Nuevo site personal
+Actualización al nuevo sitio web con 11ty
 
 Site personal [Valdemar](https://vlozada.com)
-Fue construido desde cero, utilizando [Jekyll][2] como CMS
-
-[2]: https://jekyllrb.com
+Inicialmenmte Fue construido desde cero, utilizando jekyll. Ahora estoy migrando hacia 11ty
