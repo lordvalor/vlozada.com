@@ -1,6 +1,1 @@
-FROM alpine:latest
-WORKDIR /var/www
-
-RUN npm install @11ty/eleventy
-
-RUN npm run buil
+FROM  18-alpine-3.8

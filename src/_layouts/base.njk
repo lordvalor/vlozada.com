@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="me" href="https://github.com/lordvalor" />
+  <link rel="me" href="https://mastodon.social/@lordvalor" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ metadata.description or description }}">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+	<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "Website",
+		"url": "{{ metadata.url }}",
+		"name": "{{ title or metadata.title }}"
+		"description": "{{ description or metadata.description }}",
+		"publisher": {
+			"@type": "Organization",
+			"name": "{{ metadata.author.name }}"
+			}
+		}
+		</script>
+<body>
+  <header>
+    <h1>{{ metadata.title or title }} </h1>
+    <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <!--<li><a href="/contact">Contact</a></li>-->
+    </ul>
+    </nav>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+  <footer>
+    <p>&copy; {{ currentYear }} {{ siteName }}. All rights reserved.</p>
+  </footer>
+</body>
+</html>
