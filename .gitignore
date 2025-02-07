@@ -11,6 +11,7 @@ vendor
 .git/
 *.old
 _site/
+public/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
