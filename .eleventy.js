@@ -1,8 +1,9 @@
-module.exports = function(eleventyConfig) {
+ module.exports = function(eleventyConfig) {
  eleventyConfig.addPassthroughCopy("src/assets"); 
 
+  templateFormats: ["md", "njk", "html", "liquid"]
+
  return{
-  templateFormats: ["md", "njk", "html", "liquid"],
   markdownTemplateEngine: "njk",
   htmlTemeplateEngine: "njk",
   dir: {
