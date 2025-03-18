@@ -1,0 +1,12 @@
+---
+layout: global/base.njk
+title: Blog
+---
+<main>
+  <h1>Blog</h1>
+  <section>
+    {% for post in collections.post %}
+      <h2>{{ post.data.title }}</h2>
+    {% endfor %}
+  </section>
+</main>

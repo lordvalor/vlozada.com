@@ -1,0 +1,19 @@
+---
+layout: global/base.njk
+title: Home
+---
+
+<header>
+  <div class="container">
+  <h1 class="site-title">Hola, Soy Valdemar</h1>
+  <p>{{ metadata.description }}</p>
+  </div>
+  <div class="main container">
+    {% for post in collections.post %}
+    <article>
+      <span class="entry-date">🗓️ {{ post.data.date }}</span>
+      <h3 class="entry-title"><a href="{{ post.data.url }}">{{ post.data.title }}</h3>
+      </article>
+    {% endfor %}
+    </div>
+</header>
