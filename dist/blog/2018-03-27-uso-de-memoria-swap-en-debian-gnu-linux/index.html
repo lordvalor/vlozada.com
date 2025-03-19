@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es_PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrador de sistemas GNU/Linux, entusiasta del desarrollo web y defensor de la privacidad cibernética.">
+  <meta name="keywords" content="">
+   <meta name="generator" content="Eleventy v3.0.0">
+  <meta name="author" content="Valdemar Lozada">
+  <meta name="robots" content="">
+  <title>Como Optimizar el Uso de Memoria Swap en debian GNU/linux</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <p>Actualmente, tenemos la posibilidad de Optimizar el uso de la memoria swap proporcionalmente en <a href="https://en.wikipedia.org/wiki/Linux" title="GNU/Linux">linux</a> gracias al <strong>Kernel</strong>.</p>
+<h2>¿Qué es la memoria swap?</h2>
+<p>También la conocemos como memoria de intercambio y simplemente una partición en el disco duro, el cual su función es nada mas y nada menos que actuar en función de memoria ram virtual siempre y cuando se haya agotado la disponible en el sistema.</p>
+<p>El pequeño detalle con esto, es que cuando usamos <em>SWAP</em> en lugar de la memoria RAM nuestro sistema se, relentiza por esta razón debemos intentar usar la menor cantidad de swap posible.</p>
+<h2>Mejorando un poco el Uso de Memoria Swap en debian GNU/linux</h2>
+<p>En las versiones de kernels actuales,tenemos la opción <strong>swappiness</strong> con el cual podremos asignar en un valor de 0 a 100, esto daría un indicativo en cuanto a la preferencia de la memoria swap respecto a la RAM</p>
+<p>Siempre que elegimos un numero mayor, habrá mas tendencia a utilizar la memoria swap. En cambio, un valor mas bajo tendrá mas preferencia por la memoria RAM, el valor por defecto de <code>swappiness</code> es de 60:</p>
+<p>Para cambiar esto valores debemos realizar lo siguiente:</p>
+<h2>Verificamos el valor actual</h2>
+<pre><code class="language-console">$ cat /proc/sys/vm/swappiness
+60
+</code></pre>
+<p>Si queremos cambiar en tiempo real, lo haríamos a través del uso del sysctl:</p>
+<pre><code class="language-console">sysctl vm.swappiness=30
+</code></pre>
+<p>Sin embargo con este método, al realizar un reinicio perderemos dicho cambios, de modo que si queremos hacerlo permanente seria de la siguiente forma:</p>
+<pre><code class="language-console">sudo vim /etc/sysctl.conf
+</code></pre>
+<p>entonces si ya existe la linea, la modificamos, de lo contrario agregamos lo siguiente:</p>
+<pre><code class="language-console">vm.swappiness=10
+</code></pre>
+<p>El valor es conveniente según los requerimientos de cada sistema, en este caso es mejor ir probando diferentes valores hasta que consideres adecuado a tu rendimiento.</p>
+
+<div class="container">
+  <footer>
+	<div clas="row">
+		<div class="twelve columns">
+			<p>Todo el contenido está bajo &copy; | <a rel="license"
+					href="http://creativecommons.org/licenses/by-nc/4.0/"> <strong>CC BY-NC 4.0</strong> a menos que se indique lo contrario</a></p>
+      <p><a href="#" target="_blank">Privacidad</a> | <a href="#" target="_blank">Disclaimer</a></p>
+		</div>
+	</div>
+  </footer>
+</div>
+</body>
+</html>

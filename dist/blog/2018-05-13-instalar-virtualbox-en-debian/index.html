@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es_PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrador de sistemas GNU/Linux, entusiasta del desarrollo web y defensor de la privacidad cibernética.">
+  <meta name="keywords" content="">
+   <meta name="generator" content="Eleventy v3.0.0">
+  <meta name="author" content="Valdemar Lozada">
+  <meta name="robots" content="">
+  <title>Como Instalar VirtualBox en Debian</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <p>Primero, es importante saber que <a href="https://www.virtualbox.org">VirtualBox</a> es una herramienta de Virtualización creado por Oracle. Cuando hablamos de <strong>Virtualización</strong>, nos referimos a que podemos realizar una instalación de otros sistemas operativos (Windows, MacOS, BSD, Linux) sobre nuestro sistema anfitrion.</p>
+<p>Se le hace llamar máquina virtual debido a que básicamente es una computadora instalada dentro de nuestra computadora pero que realmente no interactua con nuestro equipo como lo haría nuestro sistema operativo principal.</p>
+<p>Quiza, en ocasiones habras visto que algunas personas llegan a tener en su computador dos o más sistemas operativos instalados, lo mas común de estos casos seria ver linux y windows compartiendo el mismo disco duro pero en particiones diferentes, a eso le llamamos <strong>dualboot</strong>.</p>
+<p>El dualboot es comunmente usado por personas que en algunos casos utilizan linux como sistemas operativo pricipal, pero siguen dependiendo de alguna manera que alguna aplicacion el cual exclusivamente debe ser instalada en windows, normalmente cuando son creadas en lenguajes como Visual foxpro, vbasic, .net o cualquiera que de alguna manera este muy vinculada al sistema operativo. Otro caso comun es de los gamers que necesitan correr sus juegos para aprovechar al máximo los gráficos entre otras caracteristicas de sus juegos.</p>
+<p>Sin embargo existen otros casos un poco menos &quot;exigentes&quot; en los que no tenemos la necesidad de compartir nuestro disco duro con un <code>SO</code> que no queramos usar, o que solamente usaremos para cosas puntuales o especeficas como: probar herramientas, simular equipos en red, configuraciones bases y más. todo esto lo podremos hacer en una maquina virtual [VM]. y de esta manera no tendremos que estar reiniciando para cambiar o alternar entre sistemas operativos.</p>
+<h2>Instalando VirtualBox</h2>
+<p>En caso de <strong>Debian</strong> y derivados, lo podremos encontrar en repositorios oficiales, sin embargo yo recomeindo utilizar los repositorios de la pagina para obtener la última version estable del <strong>vbox</strong></p>
+<h2>Editando nuestros source.list</h2>
+<p>En este paso, debemos saber cual es la versión de nuestro sistema, en mi caso utilizo Debian y usaré <strong>stretch</strong> y lo colocaremos de la siguiente manera:</p>
+<pre><code class="language-console">deb https://download.virtualbox.org/virtualbox/debian mydist contrib
+</code></pre>
+<p>En donde <code>mydist</code> será la versión que usaremos. Luego de comprendido esto, procedemos a editar nuestro archivo source.list.</p>
+<p><code>$ sudo vim /etc/apt/source.list</code></p>
+<p>y agregamos el repositorio</p>
+<pre><code class="language-console">deb https://download.virtualbox.org/virtualbox/debian stretch contrib
+</code></pre>
+<p>Ahora, debemos agregar los <em>public key</em> para realizar una descarga segura desde los servidores de Oracle, Lo haremos de la siguiente manera:</p>
+<h2>Descargamos el archivo</h2>
+<p><code>$ wget https://www.virtualbox.org/download/oracle_vbox_2016.asc</code></p>
+<p>y si todo sale bien, deberia mostrar una salida como la siguiente:</p>
+<pre><code class="language-console">--2018-05-13 18:06:48-- https://www.virtualbox.org/download/oracle_vbox_2016.asc
+Resolviendo www.virtualbox.org (www.virtualbox.org)... 137.254.60.32
+Conectando con www.virtualbox.org (www.virtualbox.org)[137.254.60.32]:443... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 3157 (3,1K) [text/plain]
+Grabando a: &quot;oracle_vbox_2016.asc&quot;
+
+oracle_vbox_2016.asc 100%[======================================================&gt;] 3,08K 19,8KB/s en 0,2s
+
+2018-05-13 18:06:49 (19,8 KB/s) - &quot;oracle_vbox_2016.asc&quot; guardado [3157/3157]
+</code></pre>
+<p>Luego de esto procedemos a agregar</p>
+<pre><code class="language-console">sudo apt-key add oracle_vbox_2016.asc
+</code></pre>
+<pre><code class="language-console">OK
+</code></pre>
+<p>Si queremos realizar todo desde un solo comando para decargar y agregar, se hace de la siguiente manera:</p>
+<p><code>wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code></p>
+<p>la huella de la llave deberia ser la siguiente:</p>
+<pre><code class="language-console">B9F8 D658 297A F3EF C18D 5CDF A2F6 83C5 2980 AECF
+Oracle Corporation (VirtualBox archive signing key) &lt;info@virtualbox.org&gt;&lt;/info@virtualbox.org&gt;
+</code></pre>
+<p>Ahora, <strong>Procedemos a instalar</strong></p>
+<p><code>$ sudo apt-get update &amp;&amp; sudo apt-get install virtualbox-5.2</code></p>
+<p>Esto hará que nuestro sistema de actualice con la ultima version de <strong>virtualbox</strong> y posteriormente comienza la instalación.</p>
+<h2>2da Modalidad, Descargando el .deb</h2>
+<p>Antes de proceder a realizar la descarga, debemos estar seguro la version de nuestro sistema operativo sea 32 o 64 bit es decir que: <code>(32=i386)</code> y <code>(64=AMD64)</code>
+lueg de identificado esto, procedemos a realizar la descarga desde la pagina de <a href="https://www.virtualbox.org/wiki/Linux_Downloads">VirtualBox</a></p>
+<p>Luego de haber cultimando la descargar del archivo .deb procemos a la instalación de la siguiente manera:</p>
+<p><code>$ sudo dpkg -i ~/Descargas/virtualbox-5.2_5.2.12-122591~Debian~stretch_amd64.deb</code></p>
+<p>y si todo ha salido como deberia, ya tenemos virtualbox instalado VirtualBox en Debian stretch GNU/Linux</p>
+<h3>Agregamos nuestro usuario al Grupo vbox</h3>
+<p>Debemos agregar nuestro usuario al grupo <strong>vboxusers</strong> de la siguiente manera:</p>
+<p><code>$ sudo usermod -G vboxusers -a usuario</code></p>
+<p>Donde usuario seria el nombre de usuario de nuestro equipo con el que estamos trabajando.</p>
+<p>Otra manera de hacerlo seria la siguiente:</p>
+<p><code>$ sudo usermod -G vboxusers -a $USER</code></p>
+<p>Ahora, ya pueden hacer uso de VirtualBox.</p>
+<p>*[VirtualBox]: VirtualBox is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
+*[Oracle]: Oracle Corporation is an American multinational computer technology corporation, headquartered in Redwood Shores, California.
+*[Debian]:Debian is a Unix-like computer operating system that is composed entirely of free software, and packaged by a group of individuals participating in the Debian Project.
+*[Virtualización]: In computing, virtualization refers to the act of creating a virtual version of something, including virtual computer hardware platforms, storage devices, and computer network resources.</p>
+
+<div class="container">
+  <footer>
+	<div clas="row">
+		<div class="twelve columns">
+			<p>Todo el contenido está bajo &copy; | <a rel="license"
+					href="http://creativecommons.org/licenses/by-nc/4.0/"> <strong>CC BY-NC 4.0</strong> a menos que se indique lo contrario</a></p>
+      <p><a href="#" target="_blank">Privacidad</a> | <a href="#" target="_blank">Disclaimer</a></p>
+		</div>
+	</div>
+  </footer>
+</div>
+</body>
+</html>

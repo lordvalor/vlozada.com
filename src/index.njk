@@ -8,12 +8,12 @@ title: Home
   <h1 class="site-title">Hola, Soy Valdemar</h1>
   <p>{{ metadata.description }}</p>
   </div>
+</header>
   <div class="main container">
     {% for post in collections.post %}
     <article>
-      <span class="entry-date">🗓️ {{ post.data.date }}</span>
-      <h3 class="entry-title"><a href="{{ post.data.url }}">{{ post.data.title }}</h3>
-      </article>
+      <span class="entry-date">🗓️ {{ post.date.toUTCString() }}</span>
+      <h3 class="entry-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    </article>
     {% endfor %}
-    </div>
-</header>
+  </div>

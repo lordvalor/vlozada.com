@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es_PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrador de sistemas GNU/Linux, entusiasta del desarrollo web y defensor de la privacidad cibernética.">
+  <meta name="keywords" content="">
+   <meta name="generator" content="Eleventy v3.0.0">
+  <meta name="author" content="Valdemar Lozada">
+  <meta name="robots" content="">
+  <title>Instalando Nvdia 9400 GT en debian wheeze/testing</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <p>Este procedimiento es compatible con las tarjetas
+<strong>En Kernel 3.2.0-2-686-pae</strong></p>
+<p><a href="https://www.nvidia.es/page/home.html">GeForce</a> 9M series:</p>
+<pre><code class="language-console">9800M GTX, 9800M GTS, 9800M GT, 9800M GS, 9700M GTS, 9700M GT, 9650M GT, 9650M GS, 9600M GT, 9600M GS, 9500M GS, 9500M G, 9400M G, 9400M, 9300M GS, 9300M G, 9200M GS, 9100M G
+</code></pre>
+<p>Si no estas seguro del modelo de tu tarjeta puedes verificar de la siguiente forma:</p>
+<pre><code class="language-console">sudo  lspci | grep VGA
+</code></pre>
+<p>y devuelve algo como</p>
+<pre><code class="language-console">04:00.0 VGA compatible controller: NVIDIA Corporation G96 [GeForce 9400 GT](rev-a1)
+</code></pre>
+<p>Actualmente logre hacer el cambio exitoso a debian wheeze y to va funcionado excelente excepto por el driver de la tarjeta de video, no es que no esté funcionando si no que  no se obtiene el rendimiento adecuado y es por el soporte genérico del driver “nouveau” integrado en el kernel.</p>
+<p>Ahora para hacer funcionar la tarjeta de video vamos a hacer lo siguiente…!</p>
+<p>Primero verificamos que  tenemos instaladas linux-header y linux-imagen de acuerdo la versión de nuestro kernel en mi caso <em>3.2.0-2-686-pae</em></p>
+<pre><code class="language-console">$sudo aptitude search linux-image
+</code></pre>
+<p>mostrara el  siguiente resultado:</p>
+<pre><code class="language-console">i A linux-image-3.2.0-2-686-pae     - Linux 3.2 for modern Pc
+</code></pre>
+<p>si al principio muestra una “i” es porque el paquete ya se encuentra instalado si muestra una “p” es por que no esta instalado pero esta disponible para ser instalado.</p>
+<h2>Instalando Linux-image</h2>
+<p>Si tu caso te muestra una “p” entonces procedemos a instalar de la siguiente forma:</p>
+<pre><code class="language-console"># aptitude install linux-image-3.2.0-2-686-pae
+</code></pre>
+<p>y utilizamos el mismo procedimiento para linux-headers-3.2.0-2-686-pae</p>
+<p>luego de instalar verificamos si el driver  nouveau esta cargado de la siguiente forma</p>
+<pre><code class="language-console"># lsmod
+</code></pre>
+<p>una manera mas exacta seria con</p>
+<pre><code class="language-console">lsmod | grap  nouveau
+</code></pre>
+<p>y lo agregamos a la lista negra para que no se cargue al inicial el sistema.</p>
+<p>Con el editor de texto de tu preferencia abrimos el archivo fbdev-blacklist.conf de la siguiente manera</p>
+<pre><code class="language-console"># vim.tiny /etc/modprobe.d/fbdev-blacklist.conf
+</code></pre>
+<p>agregamos al final de la linea “blacklist nouveau”  (sin las comillas)  y guardamos los cambios.
+luego instalamos:</p>
+<pre><code class="language-console"># aptitude install nvidia-glx nvidia-settings nvidia-xconfig nvidia-xconfig
+</code></pre>
+<p>luego de instalar seguramente te dirá que el driver nouveau aun se encuentra cargado y que debe reiniciar…! despues de esto ya podremos tener nuestra tarjeta de video funcionando correctamente.</p>
+<p>Espero que les pueda servir de ayuda…!</p>
+
+<div class="container">
+  <footer>
+	<div clas="row">
+		<div class="twelve columns">
+			<p>Todo el contenido está bajo &copy; | <a rel="license"
+					href="http://creativecommons.org/licenses/by-nc/4.0/"> <strong>CC BY-NC 4.0</strong> a menos que se indique lo contrario</a></p>
+      <p><a href="#" target="_blank">Privacidad</a> | <a href="#" target="_blank">Disclaimer</a></p>
+		</div>
+	</div>
+  </footer>
+</div>
+</body>
+</html>

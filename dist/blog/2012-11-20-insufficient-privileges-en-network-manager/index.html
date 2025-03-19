@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es_PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrador de sistemas GNU/Linux, entusiasta del desarrollo web y defensor de la privacidad cibernética.">
+  <meta name="keywords" content="">
+   <meta name="generator" content="Eleventy v3.0.0">
+  <meta name="author" content="Valdemar Lozada">
+  <meta name="robots" content="">
+  <title>Solucionando problema (32) insufficient privileges en network-manager</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <p>Al instalar Debian en una <a href="https://en.wikipedia.org/wiki/Acer_Aspire_One">Acer Aspire One d-250</a> Teniendo razones obvias de rendimiento me decido por <strong>Openbox</strong> como entorno de escritorio.</p>
+<p>Luego de mucho tiempo usando como gestor de interfaces de redes <strong>WICD</strong> decidí que era hora de darle una oportunidad al amado por mucho y odiado por algunos <strong>Network-Manager.</strong></p>
+<p>Posterior a la configuración de <strong>tint2,</strong> para poder hacer que network-manager se muestre en el systemtray días después tengo la oportunidad de probar mi conexión wifi pero resulta que al tratar de conectarme, me tope con un fabuloso aviso diciéndome “Failed to add new connection: (32) insufficient privileges”.</p>
+<p>Entonces procedo a investigar cual es la causa de este inconveniente.</p>
+<p>y simplemente es que como yo siempre instalo Debian como sistema base &quot;Netinstall&quot; y luego voy instalando y configurando lo que necesito, encontré la solución y realmente es sencilla.</p>
+<h3>Solucionando problema (32) insufficient privileges en network-manager</h3>
+<p>Primero, debemos agregar nuestro usuario regular al group <code>netdev</code> de la siguiente manera:</p>
+<p><code>adduser tusuario netdev</code></p>
+<p>Posteriormente nos vamos al directorio.</p>
+<p><code>cd /etc/polkit-1/localauthority/50-local.d/</code>
+allí creamos un archivo con el siguiente nombre:</p>
+<p><code>org.freedesktop.NetworkManager.pkla</code>
+Luego y con el editor de su preferencia le agregamos lo siguiente.</p>
+<pre><code class="language-console">Identity=unix-group:netdev
+Action=org.freedesktop.NetworkManager.*
+ResultAny=yes
+ResultInactive=no
+ResultActive=yes
+</code></pre>
+<p>Guardamos y Reiniciamos el Network-manager</p>
+<pre><code class="language-console"># /etc/init.d/network-manager restart
+</code></pre>
+<p>Listo ya deberíamos poder acceder a nuestra conexión wifi desde el applet del network-manager.</p>
+
+<div class="container">
+  <footer>
+	<div clas="row">
+		<div class="twelve columns">
+			<p>Todo el contenido está bajo &copy; | <a rel="license"
+					href="http://creativecommons.org/licenses/by-nc/4.0/"> <strong>CC BY-NC 4.0</strong> a menos que se indique lo contrario</a></p>
+      <p><a href="#" target="_blank">Privacidad</a> | <a href="#" target="_blank">Disclaimer</a></p>
+		</div>
+	</div>
+  </footer>
+</div>
+</body>
+</html>

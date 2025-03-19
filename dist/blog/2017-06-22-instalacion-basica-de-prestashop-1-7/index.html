@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es_PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrador de sistemas GNU/Linux, entusiasta del desarrollo web y defensor de la privacidad cibernética.">
+  <meta name="keywords" content="">
+   <meta name="generator" content="Eleventy v3.0.0">
+  <meta name="author" content="Valdemar Lozada">
+  <meta name="robots" content="">
+  <title>Instalación Prestashop 1.7 en AWS</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <p>Instalación Básica de <a href="https://www.prestashop.com/en">Prestashop 1.7</a> en una instancia <a href="https://aws.amazon.com/">AWS</a> ec2 en ubuntu</p>
+<p><strong>Instalación paso a paso en <em>EC2-AWS</em> con <em>Ubuntu Server</em></strong></p>
+<p>Herramientas:</p>
+<ul>
+<li>wget</li>
+<li>unzip</li>
+<li>ssh</li>
+<li>chmod chown</li>
+</ul>
+<h2>Conectando &quot;servidor desarrollo&quot;</h2>
+<p>Para conectarnos al Servidor Desarrollo, usando las credenciales asignadas de la siguiente manera:</p>
+<p><code>ssh -i ~./ssh/keyName.pem usuario@ec2-xx-x-xx-228.compute-1.amazonaws.com</code></p>
+<h2>1 Descargando PrestaShop Version 1.7 Estable</h2>
+<p>En este caso, trabajaremos bajo el directorio /var/www/html/</p>
+<p><code>cd /var/www/html/</code></p>
+<p>y creamos el directorio donde instalaremos, para este caso le llamaremos <code>ps_test</code></p>
+<p><code>sudo mkdir ps_test</code></p>
+<p><strong>si solicita contraseña, coloca la misma de las credencial de usuario al conectarse.</strong></p>
+<p>entramos al directorio creado.</p>
+<p><code>cd ps_test</code></p>
+<h2>Descarga</h2>
+<p>Procedemos a descarar prestashop de la siguiente manera, usando el comando <code>wget</code>.</p>
+<p><code>sudo wget https://download.prestashop.com/download/releases/prestashop_1.7.1.2.zip</code></p>
+<p>Luego de terminar la descarga, procedemos a descomprimir:</p>
+<p><code>unzip prestashop_1.7.1.2.zip</code></p>
+<p>obtendremos la siguiente salida:</p>
+<pre><code class="language-console">Archive:  prestashop_1.7.1.2.zip
+  inflating: prestashop.zip          
+  inflating: index.php               
+  inflating: Install_PrestaShop.html
+</code></pre>
+<p>En este punto, si hemos seguido paso a paso, podriamos acceder a travez del navegador y obtendremos la primera pagina de Prestashop que nos indica que podemos continua con la instalación:</p>
+<p><code>http://120.xx.xx.xx/ps_test/</code></p>
+<blockquote>
+<p>Donde <strong>120.xx.xx.xx</strong> será la IP de nuestro servidor.</p>
+</blockquote>
+<h2>2 Creando DB mysql</h2>
+<p>Conectando a mysql (Debe solicitar credenciales para acceder a la Instancia mysql).</p>
+<p><code>mysql -u usuario -p</code></p>
+<blockquote>
+<p>donde &quot;usuario&quot; y password será el proporcionado por el administrador de sistemas.</p>
+</blockquote>
+<p>luego de acceder a nuestra instancia</p>
+<pre><code class="language-mysql">Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 140
+Server version: 5.7.18-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt;
+
+</code></pre>
+<p>Para ver los nombres de las DB's existentes Escibimos lo siguiente:</p>
+<p><code>show databases;</code></p>
+<p>y obtendremos la siguiente salida:</p>
+<pre><code class="language-mysql"> mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+|db_tes1             |
+|db_tes1.1           |
+|db_tes2             |
++--------------------+
+</code></pre>
+<p>De esa manera veificamos que no se repita el nombre de la db que usaremos.</p>
+<p>Precedemos a crear la DB necesaria para nuestro prestaShop de prueba.</p>
+<p><code>create database prestashop_test;</code></p>
+<p>eso nos devolverá lo siguiente:</p>
+<pre><code class="language-mysql">Query OK, 1 row affected (0.00 sec)
+</code></pre>
+<p>para verificar que se ha creado nuestra DB con el nombre asignado, volvemos a escribir:</p>
+<p><code>show databases;</code></p>
+<p>y deberiamos ver lo siguiente:</p>
+<pre><code class="language-mysql"> mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+|db_tes1             |
+|db_tes1.1           |
+|db_tes2             |
+|prestashop_test     |
++--------------------+
+</code></pre>
+<p>Hasta acá, ya tenemos preparada nuestra DB para continuar con la instalación y podemos salir de nuestra instancia MYSQL:</p>
+<p>escribimos.</p>
+<p><code>\q</code></p>
+<pre><code class="language-console">Bye 
+</code></pre>
+<h2>Instalación</h2>
+<p>Ahora que ya tenemos todo preparado para la instalación, debememos descomprimir nuestra Tienda prestaShop:</p>
+<p><code>sudo unzip prestashop.zip</code></p>
+<p>Luego que comienza a descomprimir, en algun punto nos pide reemplazar el archivo index.php existente:</p>
+<pre><code class="language-console">replace index.php? [y]es, [n]o, [A]ll, [N]one, [r]ename:
+</code></pre>
+<p>Y le decimos que si, presionando <code>y</code> <strong>[y]es:</strong></p>
+<p>En este punto, si todo ha salido bien, deberiamos ir a nuestro navegador y escribimos nuevamente:</p>
+<p><code>http://120.xx.xx.xx/ps_test/</code></p>
+<blockquote>
+<p>Donde <strong>120.xx.xx.xx</strong> será la IP de nuestro servidor.</p>
+</blockquote>
+<p>y automaticamente seremos redireccionados a la pagina de instalación:</p>
+<p><code>http://120.xx.xx.xx/ps_test/install/</code></p>
+<p>El cual nos muestra un asistente para continuar la configuración de la tienda:</p>
+<p>-Seleccionamos el Idioma y presionamos <strong>[NEXT]</strong>.
+-Aceptamos el License Agreements y presionamos  <strong>[NEXT]</strong>.</p>
+<p>En este punto, probablemente nos muestra una ventana con algunos <strong>Warning</strong> relacionados con permisos de nuestros archivos.</p>
+<p>Regresamos a nuestro terminal y nos regresamos al directorio principal para asignar los permisos necesarios:</p>
+<p><code>cd /var/www/html/</code></p>
+<p>escribimos los siguientes comandos:</p>
+<p><code>sudo chown -R www-data:www-data ps_test</code></p>
+<p><strong>Esto asigna el propietario y grupo del servidor web para obtener permisos de escritura.</strong></p>
+<p>Si regresamos a nuestro navegador, presionamos <strong>REFRESH</strong> y deberia mostrar un cuadro verde con el siguiente mensaje:</p>
+<p><strong><em>PrestaShop compatibility with your system environment has been verified!</em></strong></p>
+<p>Presionamos <strong>[NEXT]</strong> y nos pedira los datos sobre nuestra tienda como el nombre, direccion, email, país, usuario administrador, etc.</p>
+<p>completamos todos los datos y presionamos <strong>[NEXT].</strong></p>
+<p><strong><em>NO OLVIDES LA CONTRASEÑA QUE LE COLOCASTE</em></strong></p>
+<h2>Conectando con la base de datos</h2>
+<p>En este punto, el sistema te solicita los datos para conectarte a la DB que creamos en el paso 2,</p>
+<p>Los datos que solicita son los siguientes:</p>
+<p>-<strong>Database server address</strong> podremos dejar como viene por defecto <code>127.0.0.1</code> o escribimos <code>localhost</code>.</p>
+<p>-<strong>Database name</strong> acá escribimos el nombre de la db que hemos creado, en este ejemplo se usó <code>prestashop_test</code></p>
+<p>-<strong>Database login</strong> Aquí colocas el usuario que te haya asignado el Administador de Sistemas.</p>
+<p>-<strong>Database password</strong> y Aca, el password que te haya asignador el Administador de Sistemas.</p>
+<p>-<strong>Tables prefix</strong> hace referencia a prefijo que utilizaran las tablas creadas por PrestaShop, esto es mejor dejarlo extamente como está. por defecto es <code>ps_</code></p>
+<p>Presionamos <strong>[NEXT]</strong> y lograremos ver una barra de progreso realizando la instalación de nuestra tienda y si todo sale perfecto lograremos ver el siguiente mensaje:</p>
+<p><em>Your installation is finished! You have just finished installing your shop. Thank you for using PrestaShop! Please remember your login information:</em></p>
+
+<div class="container">
+  <footer>
+	<div clas="row">
+		<div class="twelve columns">
+			<p>Todo el contenido está bajo &copy; | <a rel="license"
+					href="http://creativecommons.org/licenses/by-nc/4.0/"> <strong>CC BY-NC 4.0</strong> a menos que se indique lo contrario</a></p>
+      <p><a href="#" target="_blank">Privacidad</a> | <a href="#" target="_blank">Disclaimer</a></p>
+		</div>
+	</div>
+  </footer>
+</div>
+</body>
+</html>
