@@ -1,0 +1,13 @@
+---
+layout: global/base.njk
+---
+
+<header>
+  <div class="container">
+  <h1 class="site-title">{{ title }}</h1>
+  <span class="entry-date">🗓️ {{ page.date.toUTCString() }}</span>
+  </div>
+</header>
+  <div class="main container">
+{{ content | safe }}
+  </div>
