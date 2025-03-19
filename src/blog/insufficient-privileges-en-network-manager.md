@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Solucionando problema (32) insufficient privileges en network-manager
 date: 2012-11-20
 description: network-manager

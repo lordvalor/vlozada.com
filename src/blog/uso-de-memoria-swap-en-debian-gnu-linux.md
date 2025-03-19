@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Como Optimizar el Uso de Memoria Swap en debian GNU/linux
 date: 2018-03-27
 description: Optimización de uso de la Memoria Swap

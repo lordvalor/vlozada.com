@@ -1,6 +1,7 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: He migrado a Jekyll
+date: 2020-01-14
 description: Migracion de CMS WordPress a Jekyll CMS
 categories: blog
 tags:

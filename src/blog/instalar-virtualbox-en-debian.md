@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Como Instalar VirtualBox en Debian
 date: 2018-05-13
 description: VirtualBox Como herramienta de Virtualización

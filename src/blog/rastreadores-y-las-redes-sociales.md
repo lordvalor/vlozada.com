@@ -1,6 +1,7 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Rastreadores y las redes sociales.
+date: 2020-01-19
 description: Los rastreadores siguen tu actividad en linea para recopilar información sobre tus hábitos e intereses de navegación.
 categories: privacidad
 tags:

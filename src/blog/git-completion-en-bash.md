@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: "git-completion en bash"
 date:  2018-06-17
 description: Haciendo uso de Bash completion con git

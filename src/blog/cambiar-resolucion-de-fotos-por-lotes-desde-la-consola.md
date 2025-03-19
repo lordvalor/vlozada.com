@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Cambiar resolución de fotos por lotes desde la consola.
 date: 2013-06-04
 description: Manipulación de imagenes con imagemagick

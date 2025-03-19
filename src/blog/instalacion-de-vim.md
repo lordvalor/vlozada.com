@@ -1,6 +1,7 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Instalación de VIM
+date: 2022-02-22
 description: Instalacion Básica de VIM para comenzar desde cero.
 categories: vim
 tags:

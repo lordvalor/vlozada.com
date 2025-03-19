@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: "Instalando Nvdia 9400 GT en debian wheeze/testing"
 date: 2012-07-06
 description: Este procedimiento es compatible con las tarjetas En Kernel 3.2.0-2-686-pae

@@ -1,5 +1,5 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Instalación Prestashop 1.7 en AWS
 date: 2017-06-22
 description: Instalación Básica de Prestashop 1.7 en una instancia AWS ec2 en ubuntu

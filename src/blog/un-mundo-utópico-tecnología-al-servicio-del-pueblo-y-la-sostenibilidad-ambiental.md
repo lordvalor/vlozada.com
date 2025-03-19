@@ -1,6 +1,7 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: "Un mundo utópico: tecnología al servicio del pueblo y la sostenibilidad ambiental"
+date: 2024-03-19
 description: Imagina un mundo donde los buenos programadores informáticos son los líderes en la toma de decisiones tecnológicas y los políticos son responsables ante los ciudadanos.
 categories: personal
 tags:

@@ -2,7 +2,6 @@
 layout: global/base.njk
 title: Home
 ---
-
 <header>
   <div class="container">
   <h1 class="site-title">Hola, Soy Valdemar</h1>
@@ -10,10 +9,10 @@ title: Home
   </div>
 </header>
   <div class="main container">
-    {% for post in collections.post %}
+    {%- for post in collections.post | reverse -%}
     <article>
       <span class="entry-date">🗓️ {{ post.date.toUTCString() }}</span>
       <h3 class="entry-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
     </article>
-    {% endfor %}
+    {%- endfor -%}
   </div>

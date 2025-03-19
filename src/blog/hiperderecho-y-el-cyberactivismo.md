@@ -1,6 +1,7 @@
 ---
-layout:  global/base.njk
+layout:  global/posts.njk
 title: Hiperderecho y cyber activismo en Perú.
+date: 2020-02-06
 description: Cyber Activismo y Seguridad de Información.
 categories: hacktivismo
 tags:
