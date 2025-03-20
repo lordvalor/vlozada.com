@@ -1,0 +1,42 @@
+{
+  "mainMenu":[
+  {
+  "title": "Home",
+  "link": "/"
+  },
+  {
+    "title": "About",
+    "link": "/about"
+  },
+  {
+    "title": "Contacto",
+    "link": "/contacto"
+  },
+  {
+    "title": "Blogroll",
+    "link": "/blogroll"
+    }
+  ],
+  "contactLink":[
+  {
+  "title": "Linkedin",
+  "link": "https://www.linkedin.com/in/valdemar-dev/"
+  },
+  {
+    "title": "Github",
+    "link": "https://github.com/lordvalor"
+  },
+  {
+    "title": "Codeberg",
+    "link": "https://codeberg.org/vlozada"
+  },
+  {
+    "title": "Mastodon",
+    "link": "https://mastodon.social/@lordvalor"
+  },
+  {
+    "title": "Email",
+    "link": "mailto:valdemar@vlozada.com"
+  }
+]     
+}
