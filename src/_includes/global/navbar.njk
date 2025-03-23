@@ -1,0 +1,16 @@
+{% block header %}
+  <header>
+    <div class="header">
+      <nav>
+        <ol>
+          {%-for nav in menu.mainMenu -%}
+            <li><a href="{{nav.link}}" title="{{nav.title}}">{{ nav.title }}</a></li>
+          {%-endfor-%}
+        </ol>
+      </nav>
+    </div>
+    <div class="container">
+      <h1 class="site-title">{{ title }}</h1>
+    </div>
+  </header>
+{% endblock %}
