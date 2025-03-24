@@ -1,3 +1,4 @@
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/css");
     eleventyConfig.addPassthroughCopy("src/assets/js");
@@ -14,6 +15,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/android-chrome-192x192.png");
     eleventyConfig.addPassthroughCopy("src/android-chrome-512x512.png");
     eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png ");
+    eleventyConfig.addPlugin(pluginRss);
 
     return {
         markdownTemplateEngine: "njk",
