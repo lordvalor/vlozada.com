@@ -1,0 +1,21 @@
+---
+layout: global/base.njk
+title: Blogroll
+---
+<header>
+  <div class="container">
+    <h1 class="site-title">{{ title }}</h1>
+  </div>
+  </header>
+  <div class="main container">
+<p>Esta página enumera algunos de mis blogs favoritos. No es una lista exhaustiva, y ciertamente no todos los blogs que leo.
+Estas son mis recomendaciones si estás interesado en blogs personales.</p>
+<p>Todas mis recomendaciones a continuación tienen un feed RSS (creo que es muy importante), por lo que no debería tener ningún problema suscribirse.</p>
+<ul>
+{%- for urls in blogroll.items -%}
+  <li><a href="{{ urls.link }}" title="{{ urls.BlogName }}" target="_blank" rel="noopener noreferrer">{{ urls.BlogName }}</a>
+  <span><a href="{{ url.rss }}" title="{{ url.BlogName }}" target="_blank" rel="noopener noreferrer">[ RSS ]</a></span>
+  </li>
+{% endfor %}
+</ul>
+</div>

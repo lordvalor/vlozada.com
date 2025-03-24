@@ -11,8 +11,9 @@ vendor
 .git/
 *.old
 _site/
+dist/
+public/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
 /node_modules
-*.json

@@ -1,0 +1,19 @@
+---
+layout: global/base.njk
+title: Contacto
+---
+<header>
+  <div class="container">
+    <h1 class="site-title">{{ title }}</h1>
+  </div>
+  </header>
+<div class="main container">
+<p>No suelo estar en Redes Sociales convencionales, si deseas ponerte en contacto conmigo, puedes hacerlo vía e-mail, debido a que para mi sigue siendo el medio más eficiente, tengo una rutina para revisar y responder correos diariamente.
+</p>
+<p>También me puedes encontrar en: </p>
+  <ul>
+  {%- for contacto in menu.contactLink -%}
+    <li><a href="{{ contacto.link }}" title="{{ contacto.title }}" target="_blank" rel="noopener noreferrer">{{ contacto.title }}</a></li>
+  {%- endfor -%}
+  </ul>
+</div>

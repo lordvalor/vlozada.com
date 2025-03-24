@@ -1,24 +1,20 @@
 {
   "name": "vlozada.com",
   "version": "1.0.0",
-  "description": "Personal web site",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sass-dev": "sass --watch --update --style=expanded assets/scss/:assets/css",
-    "sass-prod": "sass --no-source-map-- --style=compress assets/scss/:assets/css"
+    "dev": "npx eleventy --serve",
+    "build": "npx eleventy",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vlozadadotcom/vlozadadotcom.github.io.git"
-  },
-  "author": "Valdemar",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vlozadadotcom/vlozadadotcom.github.io/issues"
+  "description": "",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
   },
-  "homepage": "https://github.com/vlozadadotcom/vlozadadotcom.github.io#readme",
   "devDependencies": {
-    "sass": "^1.54.4"
+    "@11ty/eleventy-plugin-rss": "^2.0.3"
   }
 }
