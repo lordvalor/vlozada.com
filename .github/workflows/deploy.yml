@@ -1,14 +1,15 @@
+name: 🚀 11ty Build and FTP Deploy
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
     
-name: 🚀 11ty Build and FTP Deploy
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
@@ -26,8 +27,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ftp.vlozada.com
-        username: gitdeployment@vlozada.com
+        server: ${{ FTP_SERVER }}
+        username: ${{ FTP_USER }}
         port: 21
         protocol: ftp
         password: ${{ secrets.FTP_PASSWORD }}
