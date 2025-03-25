@@ -1,23 +1,37 @@
-name: 11ty-build
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+name: 🚀 11ty Build and FTP Deploy
 jobs:
-  build:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use node 18
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js 20
       uses: actions/setup-node@v2
       with:
-        node-version: '18'
-    - run: npm ci
-    - run: npm run build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+        node-version: '20'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+        server: ${{ vars.FTP_SERVER }}
+        username: ${{ vars.FTP_USER }}
+        password: ${{ secrets.password }}
+        port: 21
+        protocol: ftp
+        local-dir: ${{ github.workspace }}/dist/
+        exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
