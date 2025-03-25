@@ -28,7 +28,7 @@ jobs:
       with:
         server: ftp.vlozada.com
         username: gitdeployment@vlozada.com
-        password: ${{ secrets.password }}
+        password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         protocol: ftp
         local-dir: ${{ github.workspace }}/dist/
