@@ -1,10 +1,10 @@
+name: 🚀 11ty Build and FTP Deploy
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
     
-name: 🚀 11ty Build and FTP Deploy
 jobs:
   web-deploy:
     name: 🎉 Deploy
