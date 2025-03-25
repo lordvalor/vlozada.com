@@ -3,6 +3,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+    
 name: 🚀 11ty Build and FTP Deploy
 jobs:
   web-deploy:
@@ -25,8 +26,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ${{ vars.FTP_SERVER }}
-        username: ${{ vars.FTP_USER }}
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.password }}
         port: 21
         protocol: ftp
