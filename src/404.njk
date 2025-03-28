@@ -1,0 +1,24 @@
+---
+permalink: 404.shtml
+eleventyAllowMissingExtension: true
+eleventyExcludeFromCollections: true
+layout: global/base.njk
+---
+<header>
+		<div class="container">
+			<h2 class="title">Error 404</h2>
+			<p>OOOPS, algo Salió mal. Acá no está la pagína que buscas :(</p>
+		</div>
+	</header>
+	<div class="main container">
+		<div class="container">
+    <h2>Pero quizá pueda interezarte alguno de los siguientes artículos:</h2>
+</div>
+<div class="main container">
+    {%- for post in collections.post | reverse -%}
+    <article>
+      <span class="entry-date">🗓️ {{ post.date.toUTCString() }}</span>
+      <h3 class="entry-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    </article>
+    {%- endfor -%}
+</div>
