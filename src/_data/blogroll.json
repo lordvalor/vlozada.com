@@ -44,6 +44,16 @@
     "BlogName": "Fanatic Naturals",
     "link": "https://fanaticnaturals.com/",
     "rss": "https://fanaticnaturals.com/"
-  }
+  },
+  {
+    "BlogName": "Minutestomidnight",
+    "link":  "https://minutestomidnight.co.uk",
+    "rss": "https://minutestomidnight.co.uk/feed.xml"
+},
+{
+  "BlogName": "Silvia Maggi's",
+  "link": "https://silviamaggi.co.uk/",
+  "rss": "https://silviamaggi.co.uk/feed.xml"
+}
 ]
 }
