@@ -11,7 +11,7 @@ tags:
   - Debian
 ---
 
-En nuestra **primera parte** de [Instalación de docker desde Cero](/blog/docker-primera-parte.html) dejamos perfectamente instalado y trabajando todo para comenzar a conocer mas sobre contenedores.
+En nuestra **primera parte** de [Instalación de docker desde Cero](/blog/docker-primera-parte/) dejamos perfectamente instalado y trabajando todo para comenzar a conocer mas sobre contenedores.
 
 Pues manos a las obra. comenzamos a conocer sobre contenedores Docker y algunos de sus principales comandos.
 
