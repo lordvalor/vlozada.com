@@ -107,4 +107,4 @@ Si todo ha sido exitoso, ahora tu tienes La última versión de Docker Engine in
 
 Si hasta acá tienes alguna duda, recuerda consultar la [documentacion Oficial de Docker](https://docs.docker.com/)
 
-[Ver Segunda parte](/src/blog/docker-segunda-parte/)
+[Ver Segunda parte](/blog/docker-segunda-parte/)
