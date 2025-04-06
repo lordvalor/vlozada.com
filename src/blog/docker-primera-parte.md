@@ -86,7 +86,7 @@ echo \
 sudo apt-get update
 ```
 
-> **NOTA** Si usas una Distribución derivada de debian, como Kali Linux, you necesitas substituir la parte de este comando donde dice CODENAME. `$(. /etc/os-release && echo "$VERSION_CODENAME")`
+> **NOTA** Si usas una Distribución derivada de debian, como Kali Linux, necesitas substituir la parte de este comando donde dice CODENAME. `$(. /etc/os-release && echo "$VERSION_CODENAME")`
 Remplaza la parte donde dice condename por la versión que corresponda, como es `bookworm`, por ejemplo.
 
 2- Instalamos los paquetes de docker en su última versión.
@@ -106,3 +106,5 @@ Este comando, lo que hace es descargar una imágen de prueba y levantar el Conte
 Si todo ha sido exitoso, ahora tu tienes La última versión de Docker Engine instalada correctamente.
 
 Si hasta acá tienes alguna duda, recuerda consultar la [documentacion Oficial de Docker](https://docs.docker.com/)
+
+[Ver Segunda parte](/src/blog/docker-segunda-parte/)
