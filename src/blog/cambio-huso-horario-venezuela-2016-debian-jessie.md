@@ -2,7 +2,7 @@
 layout:  global/posts.njk
 title: Cambio huso horario Venezuela 2016 Debian jessie
 date: 2016-05-03
-description: Configuracion de huso horariocon tzdata
+description: Configuracion de huso horario con tzdata en Debian Linux
 categories: Debian
 tags:
   - post
