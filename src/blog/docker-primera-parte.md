@@ -19,7 +19,7 @@ Estare plasmando simplemente el resultado de mis investigaciones y compilando in
 
 Entonces, como cualquier herramienta que vamos a utilizar, debemos instalarla.
 
-## Instalando Docker
+## Instalación de  Docker
 
 En esta oportunidad, estaremos trabajando con la instalación en Debian GNU linux en su version 12
 
