@@ -84,7 +84,7 @@ debian                   latest    49081a1edb0b   9 days ago       116MB
 Listo, ahora podemos generar un contenedor usando nuestra imagen personalizada basada en debian.
 
 ```bash
-docker run srv.world/debian-nginx /usr/bin/which nginx
+docker run vlozada/debian-nginx /usr/bin/which nginx
 
 /usr/sbin/nginx 
 ```
