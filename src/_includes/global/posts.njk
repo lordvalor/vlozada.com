@@ -1,13 +1,33 @@
 ---
 layout: global/base.njk
 ---
-<header>
+            <article class="container mx-auto px-6 py-12 max-w-3xl">
+              <h1 class="text-primary text-4xl font-bold mb-4">{{ title }}</h1>
+              <div class="flex items-center text-muted mb-8">
+                <span>{{ metadata.author.name }}</span>
+                <span class="mx-2">•</span>
+                <span>🗓️ {{ page.date.toUTCString() }}</span>
+              </div>
+              <div class="prose max-w-none">              
+                {{ content | safe }}
+              </div>
+              <!-- Share Section -->
+              <div class="border-t border-muted mt-12 pt-6">
+                <h4 class="text-primary font-bold mb-4">Share this post</h4>
+                <div class="flex space-x-4">
+                  <a href="#" class="text-secondary hover:text-primary">Twitter</a>
+                  <a href="#" class="text-secondary hover:text-primary">Facebook</a>
+                  <a href="#" class="text-secondary hover:text-primary">LinkedIn</a>
+                </div>
+              </div>
+            </article>
+<!-- <header>
 <div class="container">
   <h1 class="site-title">{{ title }}</h1>
   <span class="entry-date">🗓️ {{ page.date.toUTCString() }}</span>
-</div>
+  </div>
 </div>
 </header>
-<div class="main container">
-{{ content | safe }}
-</div>
+<div class="main container bg-hero-pattern bg-cover bg-center">
+ {{ content | safe }} 
+</div>-->

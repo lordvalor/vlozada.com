@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ metadata.language }}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ metadata.description }}">
-  <meta name="keywords" content="{{ metadata.keywords }}">
-  <meta name="generator" content="{{ eleventy.generator }}">
-  <meta name="author" content="{{ metadata.author.name }}">
-  <meta name="robots" content="{{ metadata.robots }}">
-  <link rel="me" href="https://github.com/lordvalor" />
-  <link rel="me" href="https://mastodon.social/@lordvalor" />
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <div class="header">
-      <nav>
-        <ol>
-          {%-for nav in menu.mainMenu -%}
-            <li><a href="{{nav.link}}" title="{{nav.title}}">{{ nav.title }}</a></li>
-          {%-endfor-%}
-        </ol>
-      </nav>
-    </div>
-{{ content | safe }}
+{%- include "global/header.njk" -%}
+<section class="bg-white py-20">
+<div class="container mx-auto px-6">
+  {{ content | safe }}
+  </div>  
+</section>
 {%- include "global/footer.njk" -%}
 </body>
 </html>
