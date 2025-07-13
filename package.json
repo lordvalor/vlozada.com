@@ -2,8 +2,10 @@
   "name": "vlozada.com",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "npx eleventy --serve",
+    "dev11ty": "npx eleventy --serve",
     "build": "npx eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,9 +14,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
-    "@11ty/eleventy-plugin-rss": "^2.0.3"
+    "@11ty/eleventy-plugin-rss": "^2.0.3",
+    "@tailwindcss/postcss": "^4.1.4",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "tailwind": "^2.3.1"
   }
 }

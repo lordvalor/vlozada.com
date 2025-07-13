@@ -1,0 +1,11 @@
+---
+layout: global/base.njk
+---
+    <main class="container mx-auto px-6 py-8">
+    <article class="bg-white rounded-lg shadow-md p-8 max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">{{ title }}</h1>
+      <section class="prose max-w-none">
+          {{ content | safe }}
+      </section>
+    </article>
+  </main>
