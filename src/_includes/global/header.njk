@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ metadata.description }}">
+  <meta name="keywords" content="{{ metadata.keywords }}">
+  <meta name="generator" content="{{ eleventy.generator }}">
+  <meta name="author" content="{{ metadata.author.name }}">
+  <meta name="robots" content="{{ metadata.robots }}">
+  <meta name="og:image" content="{{ metadata.ogImage }}">
+  <link rel="me" href="https://github.com/lordvalor" />
+  <link rel="me" href="https://mastodon.social/@lordvalor" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+{% block header %}
+<header class="bg-sky-950 border-b text-white">
+  <nav class="bg-primary px-6 py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-white text-2xl font-bold">Valdemar</h1>
+      <div class="hidden md:flex space-x-6">
+        {%-for nav in menu.mainMenu -%}
+      <a href="{{ nav.link }}" title="{{ nav.title }}" class="text-white hover:text-cyan-600">{{ nav.title }}</a>
+    {%-endfor-%}
+      </div>
+    </div>
+  </nav>
+</header>
+{% endblock %}
